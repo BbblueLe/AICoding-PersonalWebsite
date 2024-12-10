@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站 - 我的主页</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>欢迎来到我的个人网站</h1>
+            <p>我是毛晓杰，这是我的个人主页！</p>
+        </div>
+    </header>
+
+    <section id="intro" class="container">
+        <h2>关于我</h2>
+        <img src="{{ url_for('static', filename='113691257.jpg') }}" alt="个人头像" class="profile-img">
+        <p>本人毛晓杰，现就读于南京大学软件学院。我的兴趣包括：AI、数据科学、全栈开发等。</p>
+        <p>我的目标是保持持续学习，创造更有价值的技术与应用。</p>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>我的项目</h2>
+        <ul>
+            <li>
+                <h3>在线音乐播放系统</h3>
+                <p>这是我参与开发的一个课程项目，目标是开发一个在线音乐播放系统。后端采用springboot + mysql框架构建，前端采用vue + element-ui工具开发。项目应用了devops思想进行开发，采用南大git平台进行代码管理与部署。</p>
+                <a href="https://git.nju.edu.cn/9_2024_fall_devops/9_2024_fall_devops_server.git" target="_blank">查看后端源码</a>
+                <br>
+                <a href="https://git.nju.edu.cn/9_2024_fall_devops/9_2024_fall_devops_web.git" target="_blank">查看前端源码</a>
+            </li>
+            <li>
+                <h3>足球俱乐部网站</h3>
+                <p>这是另一个我开发的项目，是一个足球俱乐部网站的前端原型系统。</p>
+                <a href="https://git.nju.edu.cn/hci6082143/hci.git" target="_blank">查看项目源码</a>
+            </li>
+            <!-- 添加更多项目 -->
+        </ul>
+    </section>
+
+    <!-- 用户信息输入框部分 -->
+    <section id="user-form" class="container">
+        <h2>提交你的信息</h2>
+        <form action="/submit" method="post">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">提交</button>
+        </form>
+    </section>
+
+    <section id="users" class="container">
+        <h2>提交的用户信息</h2>
+        <ul>
+            {% for user in users %}
+            <li>{{ user['name'] }} - {{ user['email'] }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 [毛晓杰] - 所有权利保留</p>
+        </div>
+    </footer>
+</body>
+
+</html>
